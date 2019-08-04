@@ -1,0 +1,17 @@
+
+body{
+	margin: auto;
+	font-family: "Trebuchet MS", Verdana, sans-serif;
+	background-color: coral;
+	background-size: cover;
+}
+
+.TypeOfNews{
+	/* position: absolute; */
+	top: 40%;
+	left: 50%;
+	margin: auto;
+	transform: translate(-50%,-50%);
+	color: white;
+	width: max-content;
+}

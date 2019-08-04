@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+    </head>
+
+    <body>
+        <div class="TypeOfNews">
+            
+            <h1 class="Choice">Please Select Your Category</h1>
+            <form  action="/news" method="POST">
+                <select name="TypeOfNew">
+                    <option value="Top News">Top News</option>
+                    <option value="India News">India News</option>
+                    <option value="World News">World News</option>
+                    <option value="Tech News">Tech News</option>
+                    <option value="Sports News">Sports News</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Business News">Business News</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                </select>
+                <button type="submit" name="submit" > Click Me!</button>
+            </form>
+        </div>
+
+    </body>
+</html>
