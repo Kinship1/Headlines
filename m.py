@@ -2,25 +2,29 @@ from flask import Flask,request,render_template
 from flask import session,redirect
 import time
 import subprocess
-
+import pandas as pd
 
 app = Flask(__name__)
 app.secret_key = 'flaskmysavior'
+types = ""
 
 @app.route('/',methods=['GET','POST'])
 def home():
-    return render_template('home.html')
+        return render_template('home.html')
+
 
 
 @app.route('/news',methods=['GET','POST'])
 def news():
-    if request.method == 'POST':
-        global types = request.form.get('TypeOfNew')
-        subprocess.call("python soupy1.py")
-        print(types)   
-        return render_template('mypage.html')
+        if request.method == 'POST':
+                global types  
+                types = request.form.get('TypeOfNew')
+                file1 = open("type.txt","w")
+                file1.write(types)
+                file1.close()
+                subprocess.call("python soupy1.py")
+                return render_template('mypage.html')
+
 
 if __name__ == "__main__":
-    # scrapy runspider snapdeal.py -a value=laptop -o snap.csv
-    app.run(debug=True)
-
+        app.run(debug=True)
