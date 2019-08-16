@@ -1,0 +1,6 @@
+table,tr,td {
+    border: none;
+    border-collapse:collapse; 
+    color: rebeccapurple;
+    letter-spacing: 1px;
+}
