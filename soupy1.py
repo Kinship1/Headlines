@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 from pprint import pprint
-import m
+import os
 
 
 def get_page(url=''):
@@ -24,9 +24,10 @@ def get_page(url=''):
         print("must provide a valid url with HTTP protocol")
 
 
-
+file1 = open("type.txt")
+types = file1.read()
 url = "https://www.hindustantimes.com/"
-url = url + m.types
+url = url + types
 print(url)
 soup = get_page(url)
 
@@ -52,7 +53,11 @@ df = pd.read_csv("htnews.csv")
 df.drop(columns='Unnamed: 0', inplace=True)
 df = df.dropna()
 html = df.to_html()
-with open("/templates/mypage.html", "w", encoding="utf-8") as file:
-    msg = "<<link rel='stylesheet' type='text/css' href='{{ url_for('static',filename='style1.css') }}'>"
+
+for direct in os.scandir():
+    if direct.name == 'templates':
+        tem_dir = direct.path
+with open(os.path.join(tem_dir,'mypage.html'),"w", encoding="utf-8") as file:
+    msg = "<link rel='stylesheet' type='text/css' href='{{ url_for('static',filename='style1.css') }}'>"
     file.write(msg)
     file.write(html)
